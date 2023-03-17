@@ -1,0 +1,47 @@
+// LOCALHOST
+###
+GET http://localhost:8080/apostle
+
+// We use POST when we want  to send a create request 
+//we create the info manually
+###
+POST http://localhost:8080/apostle HTTP/1.1
+content-type: application/json
+
+{
+    
+    "name": "Jeffrey R",
+    "familyName": "Holland",
+    "age": "83",
+    "birthday": "Dec 3, 1940",
+    "email": "jeffreyH@gmail.com",
+    "tel": "1879988",
+      "calleddate": "June 23, 1994"
+}
+
+// We use PUT when we want  to update the data we have been created 
+// we actually change the info manually 
+//after we get the Id from the created info, 
+//we copy and paste the Id right after the contacts in the url 
+###
+PUT http://localhost:8080/apostle/641074a71cdd07dce57a8ff1 HTTP/1.1
+
+content-type: application/json
+
+{
+     "name": "Jeffrey R",
+    "familyName": "Holland",
+    "age": "83",
+    "birthday": "Dec 3, 1940",
+    "email": "jeffreyH@gmail.com",
+    "tel": "1879988",
+      "calleddate": "June 23, 1994"
+   
+}
+
+
+//we use DELETE when we want to delete the update the info and no need to type the info
+// anymore only the Id
+//we copy and paste the Id right after the DELETE URL
+###
+DELETE  http://localhost:8080/apostle/641074a71cdd07dce57a8ff1 HTTP/1.1
