@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const { requiresAuth } = require('express-openid-connect');
 //const security = require('..middleware/authorize.js');
 //const apostleController = require('..controllers/apostles');
 
 const apostleController = require('../controllers/apostle');
-
-router.get('/', apostleController.getAll);
+//every routes you want to protect , we use requiresAuth() and it will send the user to
+// another url (change site web)
+//
+router.get('/', requiresAuth(), apostleController.getAll);
 
 
 router.get('/:apostleId', apostleController.getApostle);

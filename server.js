@@ -17,7 +17,6 @@ const config = {
 //this instruction will load the library in the application
 app.use(auth(config));
 
-
 app
   .use(bodyParser.json())
   .use((req, res, next) => {
