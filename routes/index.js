@@ -9,12 +9,12 @@ router.use('/apostle', require('./apostle'));
 //call back URl https://cse341lesson7.onrender.com/callback 
 //which we have put manually to the auth0 admin panel precisely to the place where
 // you opened your Auth0 account, DOMAIN ,get the clientId, clientSECRETaccount  (called :ALLOWED CALLBACK URLs)
-router.get('/callback', (req, res) => {
+router.post('/callback', (req, res) => {
     res.status(200).send(res.oidc.user)
 });
 
 router.get('/', (req, res) => {
-    res.status(200).send(res.oidc.user)
+    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out')
 });
 
 module.exports = router;
