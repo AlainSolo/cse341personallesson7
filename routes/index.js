@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/', require('./swagger'));
+router.use('/api-docs', require('./swagger'));
 router.use('/apostle', require('./apostle'));
 //router.use('/theme', require('./theme'));
 
@@ -9,7 +9,11 @@ router.use('/apostle', require('./apostle'));
 //call back URl https://cse341lesson7.onrender.com/callback 
 //which we have put manually to the auth0 admin panel precisely to the place where
 // you opened your Auth0 account, DOMAIN ,get the clientId, clientSECRETaccount  (called :ALLOWED CALLBACK URLs)
-router.post('/callback', (req, res) => {
+router.get('/callback', (req, res) => {
+    res.status(200).send(res.oidc.user)
+});
+
+router.get('/', (req, res) => {
     res.status(200).send(res.oidc.user)
 });
 
